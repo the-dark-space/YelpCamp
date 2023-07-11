@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate')%>
+    <h1>All Campgrounds</h1>
+    <%for(let campground of campgrounds){%>
+    <div class="card mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <% if (campground.images.length) { %>
+                    <img crossorigin="anonymous" class="img-fluid" alt="" src="<%= campground.images[0].url %>">
+                <% } else { %>
+                    <img crossorigin="anonymous" class="img-fluid" alt="" src="https://res.cloudinary.com/du18vckny/image/upload/v1688845728/YelpCamp/n12q8rytmb910rybi26q.jpg">
+                <% } %>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><%=campground.title%></h5>
+                    <p class="card-text"><%=campground.description%></p>
+                    <small class="text-muted"><%=campground.location%></small>
+                    <p>
+                        <a href="campgrounds/<%=campground._id%>" class="btn btn-primary">View <%=campground.title%></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%}%>
